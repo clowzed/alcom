@@ -2,7 +2,7 @@ from setuptools import setup, find_packages
 
 setup(
 		name             = 'alcom',
-		version          = '1.0.0',
+		version          = '1.0.1',
 		packages         = find_packages(),
 		author           = 'Miasnenko Dmitry',
 		author_email     = 'cl0wzed.exe@gmail.com',
