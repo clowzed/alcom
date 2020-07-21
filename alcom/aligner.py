@@ -65,7 +65,7 @@
 #               calculate len of the line
 #               line_len = len(line) = len('    mov ax, bx') = 14
 #               claculate offset of the splitter from line
-#               splitter_offset = ' ' * longest_line_len - line_len
+#               splitter_offset = ' ' * (longest_line_len - line_len)
 #               return line + splitter_offset + self.comment_splitter + self.comment_offset + comment
 
 
