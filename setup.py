@@ -1,8 +1,9 @@
 from setuptools import setup, find_packages
+from alcom.__init__ import __version__
 
 setup(
 		name             = 'alcom',
-		version          = '1.0.1',
+		version          = __version__,
 		packages         = find_packages(),
 		author           = 'Miasnenko Dmitry',
 		author_email     = 'cl0wzed.exe@gmail.com',
@@ -10,7 +11,7 @@ setup(
 		install_requires = ['pathlib', 'argparse'],
 		entry_points={
 			'console_scripts': [
-				'alcom = alcom.converter:main'
+				'alcom = alcom.run:main'
 		]
 		}
 )
