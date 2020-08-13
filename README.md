@@ -12,6 +12,7 @@ pip3 install alcom
 ```bash
 alcom
 alcom -f asmfile.asm
+alcom -f asmfile.asm -nbc
 ```
 # Example
 ### Before

@@ -3,6 +3,9 @@ import uuid
 from typing import Callable, Generator
 
 class FileManager:
+	def __init__(self, encoding='utf-8') -> None:
+		self.encoding = encoding
+
 	@staticmethod
 	def generate_temp_file(filepath:pathlib.Path) -> pathlib.Path:
 		current_suffix:str          = filepath.suffix
@@ -10,9 +13,8 @@ class FileManager:
 		new_filename  :pathlib.Path = filepath.parent.joinpath(new_name).with_suffix(current_suffix)
 		return new_filename
 
-	@staticmethod
-	def find_longest_line(filepath:pathlib.Path, line_handler:Callable)-> int:
-		max_line = max(open(filepath), key = line_handler)
+	def find_longest_line(self, filepath:pathlib.Path, line_handler:Callable)-> int:
+		max_line = max(open(filepath, encoding=self.encoding), key = line_handler)
 		return line_handler(max_line)
 
 	@staticmethod

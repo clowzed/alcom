@@ -74,7 +74,10 @@ import pathlib
 import uuid
 from typing import Callable, Generator, Tuple
 from accessify import private, implements
-from alcom.filemanager import FileManager
+try:
+	from alcom.filemanager import FileManager
+except:
+	from filemanager import FileManager
 
 
 class CommentsAlignerInterface:
@@ -82,15 +85,19 @@ class CommentsAlignerInterface:
 		pass
 	def align_directories(self, dirpath:pathlib.Path) -> None:
 		pass
-
+	def align_no_blank_comments(self, line:str, longest_line:int) -> None:
+		pass
+	def align_comments_in_line(self, line:str, longest_line:int) -> str:
+		pass
 
 @implements(CommentsAlignerInterface)
 class CommentsAligner:
-	def __init__(self, comment_splitter:str=';', comment_offset:int=4, splitter_offset=10) -> None:
+	def __init__(self, align_function:Callable, comment_splitter:str=';', comment_offset:int=4, splitter_offset=10) -> None:
 		self.comment_splitter:str         = comment_splitter
 		self.comment_offset  :int         = " " * comment_offset
 		self.splitter_offset :str         = " " * splitter_offset
 		self.filemanager     :FileManager = FileManager()
+		self.align_function = align_function
 
 	# @brief Aligns comments in file
 	# @param[in] filepath pathlib.Path - file to be aligned
@@ -103,7 +110,7 @@ class CommentsAligner:
 			with open(temp_filepath, 'w',encoding = encoding) as new:
 				for line in f:
 					line = line.expandtabs(tabsize=4)
-					new.write(self.__align_comments_in_line__(line, longest_line) + '\n')
+					new.write(self.align_function(self, line, longest_line) + '\n')
 		filepath.unlink()
 		temp_filepath.rename(filepath)
 
@@ -111,7 +118,7 @@ class CommentsAligner:
 	# param[in] directory pathlib.Path - directory with files to be align
 	# @return None
 	def align_directories(self, dirpath:pathlib.Path) -> None:
-		for file in self.filemanager.find_files_with_extension('*.asm'):
+		for file in self.filemanager.find_files_with_extension(dirpath, '*.asm'):
 			self.align_comments(file)
 
 	# @brief returns len of the line with code (no comment)
@@ -136,15 +143,34 @@ class CommentsAligner:
 	# param[in] longest_line int len of the longest line in th file
 	# @return aligned line str
 	# Method is private
-	@private
-	def __align_comments_in_line__(self, line:str, longest_line:int) -> str:
+	def align_comments_in_line(self, line:str, longest_line:int) -> str:
 		line, comment = self.__parse_line__(line)
 		line = line.rstrip()
 		offset = " " * (longest_line - len(line)) + self.splitter_offset
 		if not line and not comment:
 			return ''
 		elif not line:
-			return f"{offset};{comment.strip()}"
+			return f"{offset};{self.comment_offset}{comment.strip()}"
 		comment = f'{self.comment_splitter}{self.comment_offset}{comment}'
+		line = self.set_tabs(line)
 		line = f"{line}{offset}{comment}"
 		return line
+
+	def align_no_blank_comments(self, line:str, longest_line:int) -> str:
+		line, comment = self.__parse_line__(line)
+		line = line.rstrip()
+		offset = " " * (longest_line - len(line)) + self.splitter_offset
+		if not line and not comment:
+			return ''
+		elif not line:
+			return f"{offset};{self.comment_offset}{comment.strip()}"
+		elif line and not comment:
+			return self.set_tabs(line)
+		else:
+			comment = f'{self.comment_splitter}{self.comment_offset}{comment}'
+			line = self.set_tabs(line)
+			line = f"{line}{offset}{comment}"
+			return line
+
+	def set_tabs(self, line) -> str:
+		return line.replace('    ', '\t')
