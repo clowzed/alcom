@@ -1,4 +1,4 @@
-[![CodeFactor](https://www.codefactor.io/repository/github/youngmeatboy/alcom/badge/master)](https://www.codefactor.io/repository/github/youngmeatboy/alcom/overview/master)
+[![CodeFactor](https://www.codefactor.io/repository/github/clowzed/alcom/badge)](https://www.codefactor.io/repository/github/clowzed/alcom)
 # ALCOM
 # Comments aligner for asm (MASM)
 
