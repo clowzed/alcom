@@ -1,8 +1,8 @@
 from setuptools import setup, find_packages
 import pathlib
 from alcom.__init__ import __version__
-
-long_description = (pathlib.Path(__file__).parent / "readme.md").read_text(encoding = "utf-8")
+with open("readme.md", encoding="utf-8") as f:
+	description = f.read()
 
 setup(
 		name             = 'alcom',
@@ -11,7 +11,7 @@ setup(
 		author           = 'Miasnenko Dmitry',
 		author_email     = 'clowzed.work@gmail.com',
 		url              = 'https://github.com/clowzed/alcom.git',
-		long_description = long_description,
+		long_description = description,
         long_description_content_type ='text/markdown',
 		install_requires = ['argparse', 'accessify'],
 		entry_points = {

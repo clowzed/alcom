@@ -16,8 +16,9 @@
 <br>
 
 ### Packet info
-[![PyPI download month](https://img.shields.io/pypi/dm/ansicolortags.svg)](https://pypi.python.org/pypi/alcom/)
-[![PyPI license](https://img.shields.io/pypi/l/ansicolortags.svg)](https://pypi.python.org/pypi/alcom/)
+[![Downloads](https://pepy.tech/badge/alcom)](https://pepy.tech/project/alcom)
+[![Downloads](https://pepy.tech/badge/alcom/month)](https://pepy.tech/project/alcom)
+[![Downloads](https://pepy.tech/badge/alcom/week)](https://pepy.tech/project/alcom)
 
 <div align="center"><h1>Installation</h1></div>
 
@@ -101,4 +102,5 @@ To add auto aligning after save:
 - You are done!
 
 ## TODO
+- [❌] Add marging options
 - [❌] Issue that comments separator cam be placed in strings 
