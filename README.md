@@ -1,20 +1,51 @@
+<div align = "center">
+<h1>ALCOM</h1>
+</div>
+<div align = "center">
+<h3>Comments aligner for assembler</h3>
+</div>
+
+#### Code factor
 [![CodeFactor](https://www.codefactor.io/repository/github/clowzed/alcom/badge)](https://www.codefactor.io/repository/github/clowzed/alcom)
-# ALCOM
-# Comments aligner for asm (MASM)
+<br>
 
+### Platforms
+[![Linux](https://svgshare.com/i/Zhy.svg)](https://svgshare.com/i/Zhy.svg)
+[![macOS](https://svgshare.com/i/ZjP.svg)](https://svgshare.com/i/ZjP.svg)
+[![Windows](https://svgshare.com/i/ZhY.svg)](https://svgshare.com/i/ZhY.svg)
+<br>
 
-# Installation
+### Packet info
+[![PyPI download month](https://img.shields.io/pypi/dm/ansicolortags.svg)](https://pypi.python.org/pypi/alcom/)
+[![PyPI license](https://img.shields.io/pypi/l/ansicolortags.svg)](https://pypi.python.org/pypi/alcom/)
+
+<div align="center"><h1>Installation</h1></div>
+
+### From [`PyPi`](https://pypi.python.org/pypi/alcom)
 ```bash
-pip install alcom
+py -m pip install alcom
 pip3 install alcom
 ```
-# Usage
+
+
+<div align="center"><h1>Usage</h1></div>
+
+#### CLI Options
+| short | long                      | description                | help                                                           |
+|-------|---------------------------|----------------------------|----------------------------------------------------------------|
+| -f    | --file                    | Sets filename for aligning | If not setted it will align all files in directory recursively |
+| -nbc  | --align_no_blank_comments | Lave no blank comments     | If not setted no splitters would be placed after codeline      |
+
+#### Running
 ```bash
 alcom
 alcom -f asmfile.asm
 alcom -f asmfile.asm -nbc
 ```
-# Example
+
+
+<div align="center"><h1>Example</h1></div>
+
 ### Before
 ```asm
 .MODEL TINY  ;set memory model
@@ -31,6 +62,7 @@ alcom -f asmfile.asm -nbc
 END
 ```
 ### After
+
 ```asm
 .MODEL TINY                                                      ;    set memory model
 .DOSSEG                                                          ;    
@@ -46,3 +78,27 @@ END
 END                                                              ;    
 
 ```
+
+<div align="center"><h1>Tips</h1></div>
+
+## VS Code
+To add auto aligning after save:
+- Add `Run on Save` extension
+- Press `ctrl` + `P` and search for `Preferences: Open Workspace Settings (JSON)`
+- Add code below into the opened file and save
+```json
+{
+    "emeraldwalk.runonsave": {
+        "commands": [
+            {
+                "match": ".asm",
+                "cmd": "alcom -nbc"
+            }
+        ]
+    }
+}
+```
+- You are done!
+
+## TODO
+- [❌] Issue that comments separator cam be placed in strings 

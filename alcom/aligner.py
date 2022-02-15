@@ -1,6 +1,6 @@
 # Author: Miasnenko Dmitry
 # Github: https://github.com/YoungMeatBoy
-# Made for labs in asm (masm)
+# Made for labs in asm 
 # It was impossible to find comment aligner for
 # asm so I decided to implement by myself
 #
