@@ -9,18 +9,13 @@
 [![CodeFactor](https://www.codefactor.io/repository/github/clowzed/alcom/badge)](https://www.codefactor.io/repository/github/clowzed/alcom)
 <br>
 
-### Platforms
-[![Linux](https://svgshare.com/i/Zhy.svg)](https://svgshare.com/i/Zhy.svg)
-[![macOS](https://svgshare.com/i/ZjP.svg)](https://svgshare.com/i/ZjP.svg)
-[![Windows](https://svgshare.com/i/ZhY.svg)](https://svgshare.com/i/ZhY.svg)
-<br>
 
 ### Packet info
 [![Downloads](https://pepy.tech/badge/alcom)](https://pepy.tech/project/alcom)
 [![Downloads](https://pepy.tech/badge/alcom/month)](https://pepy.tech/project/alcom)
 [![Downloads](https://pepy.tech/badge/alcom/week)](https://pepy.tech/project/alcom)
 
-<div align="center"><h1>Installation</h1></div>
+## Installation
 
 ### From [`PyPi`](https://pypi.python.org/pypi/alcom)
 ```bash
@@ -28,8 +23,7 @@ py -m pip install alcom
 pip3 install alcom
 ```
 
-
-<div align="center"><h1>Usage</h1></div>
+## Usage
 
 #### CLI Options
 | short | long                      | description                | help                                                           |
@@ -45,7 +39,7 @@ alcom -f asmfile.asm -nbc
 ```
 
 
-<div align="center"><h1>Example</h1></div>
+## Example
 
 ### Before
 ```asm
@@ -80,7 +74,7 @@ END                                                              ;
 
 ```
 
-<div align="center"><h1>Tips</h1></div>
+## Tips
 
 ## VS Code
 To add auto aligning after save:
